@@ -5,13 +5,13 @@
     Stores configuration data for our application.
 
 */
+ob_start(); //prevents header errors, best practice
 
-//echo basename($_SERVER['PHP_SELF']);
+define('DEBUG',TRUE); #we want to see all errors
+
+include 'credentials.php'; //database credentials
 
 define('THIS_PAGE', basename($_SERVER['PHP_SELF']));
-//echo 'the constant is storing: ' . THIS_PAGE;    
-//die;
-
 
 /*
 
@@ -35,7 +35,7 @@ $heros[] = '<img src="images/hawkeye.png" />';
 //default page values 
 
 $title = THIS_PAGE;
-$siteName = 'Site Name';
+$siteName = 'My Site!';
 $slogan = 'Whatever it is you do, we do it better.';
 $pageHeader = 'The developer forgot to put a page header!';
 $subHeader = 'The developer forgot to put a sub header!';
@@ -47,21 +47,39 @@ switch (THIS_PAGE) {
         $title = 'My template page';
         $pageHeader = 'Put PageID here';
         $subHeader = 'Put more info about page here';
+        
     break;
         
     case 'daily.php':
         $title = 'My daily page';
-        $pageHeader = 'Daily Coffee Specials';
-        $subHeader = 'All our coffee is special!';
+        $pageHeader = 'Daily Poetry Specials';
+        $subHeader = 'All our poems are special!';
+       
     break;
         
     case 'contact.php':
         $title = 'My contact page';
         $pageHeader = 'Please contact us';
         $subHeader = 'We appreciate your feedback';
+     
+    break;
+        
+    case 'db-test.php':
+        $title = 'My DB Test page';
+        $pageHeader = 'Database Test Page';
+        $subHeader = 'Check this page to see if your database credentials are correct.';
         $sloganIcon = randomize($heros);
     break;
         
+    case 'home.php':
+        $title = 'My home page';
+        $pageHeader = 'Welcome';
+        $subHeader = 'Hope you enjoy this site!';
+        $sloganIcon = randomize($heros);
+    break;
+        
+        
+    
         
         
 }
@@ -126,5 +144,18 @@ function rotate ($arr)
 	}
 }#end rotate
 
-        
+
+function myerror($myFile, $myLine, $errorMsg)
+{
+    if(defined('DEBUG') && DEBUG)
+    {
+       echo "Error in file: <b>" . $myFile . "</b> on line: <b>" . $myLine . "</b><br />";
+       echo "Error Message: <b>" . $errorMsg . "</b><br />";
+       die();
+    }else{
+		echo "I'm sorry, we have encountered an error.  Would you like to buy some socks?";
+		die();
+    }
+}
+
         

@@ -36,10 +36,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="home.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="db-test.php">DB Test</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="daily.php">Daily</a>
